@@ -1,0 +1,9 @@
+C:\GitHub\SoftPlanTest\src\SoftplanTeste.Domain.Common\bin\Release\netcoreapp2.1\SoftplanTeste.Domain.Common.deps.json
+C:\GitHub\SoftPlanTest\src\SoftplanTeste.Domain.Common\bin\Release\netcoreapp2.1\SoftplanTeste.Domain.Common.dll
+C:\GitHub\SoftPlanTest\src\SoftplanTeste.Domain.Common\bin\Release\netcoreapp2.1\SoftplanTeste.Domain.Common.pdb
+C:\GitHub\SoftPlanTest\src\SoftplanTeste.Domain.Common\obj\Release\netcoreapp2.1\SoftplanTeste.Domain.Common.csprojAssemblyReference.cache
+C:\GitHub\SoftPlanTest\src\SoftplanTeste.Domain.Common\obj\Release\netcoreapp2.1\SoftplanTeste.Domain.Common.csproj.CoreCompileInputs.cache
+C:\GitHub\SoftPlanTest\src\SoftplanTeste.Domain.Common\obj\Release\netcoreapp2.1\SoftplanTeste.Domain.Common.AssemblyInfoInputs.cache
+C:\GitHub\SoftPlanTest\src\SoftplanTeste.Domain.Common\obj\Release\netcoreapp2.1\SoftplanTeste.Domain.Common.AssemblyInfo.cs
+C:\GitHub\SoftPlanTest\src\SoftplanTeste.Domain.Common\obj\Release\netcoreapp2.1\SoftplanTeste.Domain.Common.dll
+C:\GitHub\SoftPlanTest\src\SoftplanTeste.Domain.Common\obj\Release\netcoreapp2.1\SoftplanTeste.Domain.Common.pdb
