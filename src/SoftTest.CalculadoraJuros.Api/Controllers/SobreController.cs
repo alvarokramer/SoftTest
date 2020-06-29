@@ -7,7 +7,7 @@ namespace SoftTest.CalculadoraJuros.Api.Controllers
     public class SobreController : ControllerBase
     {
         [HttpGet]
-        [Route("sobre/showmethecode")]
+        [Route("api/showmethecode")]
         public IActionResult ShowMeTheCode()
         {
             return Ok(new
