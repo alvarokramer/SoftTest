@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -10,8 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using SoftTest.CalculadoraJuros.Data;
-using SoftTest.CalculadoraJuros.Domain;
+using SoftTest.CalculadoraJuros.Api.Setup;
 
 namespace SoftTest.CalculadoraJuros.Api
 {
@@ -29,8 +25,9 @@ namespace SoftTest.CalculadoraJuros.Api
         {
             services.AddControllers();
 
-            services.AddScoped<ICalculoJuroCompostoService, CalculoJuroCompostoService>();
-            services.AddScoped<ICalculadoraRepository, CalculadoraRepository>();
+            services.AddMediatR(typeof(Startup));
+
+            services.RegisterServices();
 
             services.AddSwaggerGen(s =>
             {

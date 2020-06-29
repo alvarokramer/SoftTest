@@ -1,13 +1,18 @@
-﻿using System.Threading.Tasks;
+﻿using MediatR;
+using System.Threading.Tasks;
+using FluentValidation.Results;
+using SoftTest.Shared.Notifications;
 
 namespace SoftTest.CalculadoraJuros.Domain
 {
     public class CalculoJuroCompostoService : ICalculoJuroCompostoService
     {
-        private readonly ICalculadoraRepository _calculadoraRepository;
+        private readonly IMediator _mediator;
+        private readonly ICalculadoraRepository _calculadoraRepository;        
 
-        public CalculoJuroCompostoService(ICalculadoraRepository calculadoraRepository)
+        public CalculoJuroCompostoService(IMediator mediator, ICalculadoraRepository calculadoraRepository)
         {
+            _mediator = mediator;
             _calculadoraRepository = calculadoraRepository;
         }
 
@@ -17,10 +22,19 @@ namespace SoftTest.CalculadoraJuros.Domain
 
             var calculadoraJuroComposto = new CalculoJuroComposto(valorInicial, meses, taxaJuros);
 
-            if (calculadoraJuroComposto.IsValid())            
+            if (calculadoraJuroComposto.EhValido())            
                 return calculadoraJuroComposto.Calcular();
 
+            NotificarValidacoesErro(calculadoraJuroComposto.ValidationResult);
             return 0;
-        }        
+        }
+
+        private void NotificarValidacoesErro(ValidationResult validationResult)
+        {
+            foreach (var error in validationResult.Errors)
+            {
+                _mediator.Publish(new DomainNotification(error.PropertyName, error.ErrorMessage));
+            }
+        }
     }
 }

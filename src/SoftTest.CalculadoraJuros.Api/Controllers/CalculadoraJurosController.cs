@@ -1,16 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using SoftTest.CalculadoraJuros.Domain;
+using MediatR;
+using SoftTest.Shared.Notifications;
 
 namespace SoftTest.CalculadoraJuros.Api.Controllers
 {
     [ApiController]
     [Produces("application/json")]
-    public class CalculadoraJurosController : ControllerBase
+    public class CalculadoraJurosController : ApiControllerBase
     {
-        private readonly ICalculoJuroCompostoService _calculoJuroCompostoService;
+        private readonly ICalculoJuroCompostoService _calculoJuroCompostoService;        
 
-        public CalculadoraJurosController(ICalculoJuroCompostoService calculoJuroCompostoService)
+        public CalculadoraJurosController(INotificationHandler<DomainNotification> notifications,
+                                          ICalculoJuroCompostoService calculoJuroCompostoService) : base(notifications)
         {
             _calculoJuroCompostoService = calculoJuroCompostoService;
         }
@@ -21,7 +24,7 @@ namespace SoftTest.CalculadoraJuros.Api.Controllers
         {
             var result = await _calculoJuroCompostoService.CalcularJuroComposto(valorInicial, meses);
 
-            return Ok(new { juroComposto = result.ToString("0.00") } );
+            return Response(new { juroComposto = result.ToString("0.00") } );
         }
     }
 }
